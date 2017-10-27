@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if errormessage %}
+        {{ errormessage }}
+    {% else %}
+    <p><strong>Student name: </strong>{{ pres.studentf }} {{ pres.studentl }}</p>
+    <p><strong>Doctor name: </strong>{{ pres.doctor.get_full_name }}</p>
+    <p><strong>Condition: </strong>{{ pres.condition }}</p>
+    <p><strong>Problem: </strong>{{ pres.problem_discription }}</p>
+    <p><strong>Other advise: </strong>{{ pres.other_advise }}</p>
+    <p><strong>Medicines:</strong></p>
+    {% if meds %}
+    <ul>
+
+      {% for m in meds %}
+      <li>
+          {{ m }}{% if m.quantity %} (Available){% else %} (Not available){% endif %}
+      </li>
+
+      {% endfor %}
+
+    </ul>
+
+    {% endif %}
+    {% endif %}
+{% endblock %}

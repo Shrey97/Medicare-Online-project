@@ -1,0 +1,56 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>The Medline Health Blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+            <nav class="navbar-default navbar-inverse" style="height: 50px">
+        <div class="container-fluid navbar-backgrnd">
+
+            <!-- Header -->
+            <div class="navbar-header ">
+                <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-wheelchair" style="font-size:18px;"></i>Medline</a>
+
+            </div>
+
+            <!-- Items -->
+            <ul class="nav navbar-nav ">
+                <li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a> </li>
+                <li class="active"><a href="/blog"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Blog</a></li>
+                <li><a href="#"><i class="fa fa-user-md" aria-hidden="true"></i>&nbsp;Doctor</a></li>
+                <li><a href="{% url 'index' %}"><i class="fa fa-ambulance" style="font-size:18px;"></i>&nbsp;Ambulance</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                {% else %}
+                      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+                {% endif %}
+
+        </ul>
+
+        </div>
+    </nav>
+
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+            <h1><a href="/">The Medline Health Blog</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

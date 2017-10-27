@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+{% load staticfiles %}
+<br>
+<div class="container-fluid shamim">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class="align">Log In</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    {% if next %}
+                    <p class="text-danger">You do not have permission to view this page</p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="{% url 'login'%}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 align" for="id_username">
+                                {{ form.username.label_tag }}
+                            </label>
+                            <div class="col-sm-10 align">
+        {{ form.username }}                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id_password">
+                                {{ form.password.label_tag }}
+                            </label>
+                            <div class="col-sm-10 align" >
+{{ form.password }}                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10 submit_margin">
+
+                                <button type="submit" class="btn btn-success">Submit</button>
+                                  <input type="hidden" name="next" value="{{ next }}" />
+
+                            </div>
+                        </div>
+                    </form>
+                    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{%  endblock %}

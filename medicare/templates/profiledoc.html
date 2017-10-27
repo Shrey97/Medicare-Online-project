@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul >
+
+
+
+   {% if user.is_authenticated %}
+     <li>Hello: {{ user.get_full_name }}!!(If your logging in for first time then your details will be wrong)</li>
+        <li>This is your profile page</li>
+        <li>Specialisation: {{ profile.specialisation}}</li>
+        <li><a href="{% url 'profile-updatedoc' profile.id %}">Click here to update profile</a></li>
+        <li><a href="{% url 'prescription_create' %}">Create a prescription</a></li>
+        <li><a href="{% url 'prescription-list' %}">Your prescriptions</a></li>
+
+   {% endif %}
+  </ul>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul >
+
+
+
+   {% if user.is_authenticated %}
+        <li><h3>Name: {{ name }}</h3></li>
+        <li>Specialisation: {{ profile.specialisation}}</li>
+   {% endif %}
+  </ul>
+{% endblock %}

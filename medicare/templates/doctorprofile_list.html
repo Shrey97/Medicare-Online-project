@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-2">
+          <br>
+          <br>
+      <ul class="sidebar-nav">
+          <li><a href="{% url 'doclist' 0 %}">All</a></li>
+          <li><a href="{% url 'doclist' 1 %}">General Practioners</a></li>
+          <li><a href="{% url 'doclist' 2 %}">Dermatologists</a></li>
+          <li><a href="{% url 'doclist' 3 %}">Urologists</a></li>
+      </ul>
+      </div>
+      <div class="col-sm-10 ">
+          <h1>List of doctors</h1>
+
+    {% if object_list %}
+    <ul>
+
+      {% for doc in object_list %}
+      <li>
+        <a href="{% url 'docinfo' doc.useri.id %}">{{ doc }}</a>
+      </li>
+        <li>{{ doc.specialisation }}</li>
+        <hr>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no doctors available.</p>
+    {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

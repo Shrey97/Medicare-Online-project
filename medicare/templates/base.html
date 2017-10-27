@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image" href="https://cdn4.iconfinder.com/data/icons/medical-14/512/7-128.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% block title %}<title>Medicare</title>{% endblock %}
+
+
+</head>
+<body>
+<nav class="navbar-default navbar-inverse" style="height: 50px">
+    <div class="container-fluid navbar-backgrnd">
+
+        <!-- Header -->
+        <div class="navbar-header ">
+            <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-wheelchair" style="font-size:18px;"></i>Medline</a>
+
+        </div>
+
+        <!-- Items -->
+        <ul class="nav navbar-nav ">
+            <li class="active "  ><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a> </li>
+            <li><a href="/blog"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Blog</a></li>
+            <li><a href="{% url 'doclist' 0 %}"><i class="fa fa-user-md" aria-hidden="true"></i>&nbsp;Doctors</a></li>
+            <li><a href="/ambulancedetails/"><i class="fa fa-ambulance" style="font-size:18px;"></i>&nbsp;Ambulance</a></li>
+            <li><a href="/getblood/">Get blood</a> </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            {% else %}
+                  <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+            {% endif %}
+
+    </ul>
+
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

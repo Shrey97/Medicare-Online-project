@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <style>
+img {
+    opacity: 1.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.background {
+  background: url(https://image.freepik.com/free-photo/doctor-s-stethoscope-with-blue-background_23-2147652363.jpg) no-repeat;
+    background-size: 100%;
+    opacity: 0.2;
+}
+</style>
+  <div class="menu-data"></div>
+	<div class="page-header col-sm-12">
+
+			<div class="menu-container" style="height: 75px">
+				<div  style="height: 20px">
+                	<a href="{% url 'index' %}">
+					<img class="logo margin_lefft" src="https://i.imgur.com/LDJABGZ.png" height="80px">
+					</a>
+                </div>
+                <div style="float:right">
+				<span class="phone" style="font-size: 14px; float: left; margin: 12px 10 50px 10; color: #999;font-weight: bold;">Need Help? Call: <font color="#e76362">+91-99-99999999</font></span><br/>
+			    </div>
+                </div>
+
+    </div>
+
+</div>
+<h1>Your {{ app }} is booked, {{ st }}.</h1>
+{% endblock %}

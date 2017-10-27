@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+          <h1>List of Prescriptions</h1>
+
+    {% if prescriptions %}
+    <ul>
+
+      {% for doc in prescriptions %}
+      <li>
+        <a href="{% url 'prescription-detail' doc.id %}">{{ doc }}</a>
+      </li>
+        <hr>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no prescriptions available.</p>
+    {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}
